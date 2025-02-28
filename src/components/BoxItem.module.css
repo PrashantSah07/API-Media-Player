@@ -1,0 +1,119 @@
+.BoxItem {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border: 1px solid white;
+    padding: 0 0 20px 0;
+    text-align: justify;
+}
+
+.BoxItem div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 15px 5px 15px;
+    gap: 10px;
+}
+
+.BoxItem img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 10px
+}
+
+.BoxItem button {
+    padding: 8px 15px;
+    border: none;
+    background-color: rgb(80, 80, 244);
+    color: white;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.BoxItem button:hover {
+    background-color: rgba(80, 80, 244, 0.882);
+}
+
+.BoxItem button:active {
+    transform: scale(1.02);
+}
+
+@media only screen and (max-width:1460px) {
+    .BoxItem {
+        width: 280px;
+    }
+
+    .BoxItem img {
+        height: 275px;
+    }
+}
+
+@media only screen and (max-width:1380px) {
+    .BoxItem {
+        width: 360px;
+    }
+}
+
+@media only screen and (max-width:1160px) {
+    .BoxItem {
+        width: 300px;
+    }
+}
+
+@media only screen and (max-width:980px) {
+    .BoxItem {
+        width: 250px;
+    }
+
+    .BoxItem img {
+        height: 240px;
+    }
+}
+
+@media only screen and (max-width:830px) {
+    .BoxItem {
+        width: 200px;
+    }
+
+    .BoxItem img {
+        height: 200px;
+    }
+}
+
+@media only screen and (max-width:680px) {
+    .BoxItem {
+        width: 250px;
+    }
+
+    .BoxItem img {
+        height: 250px;
+    }
+}
+
+@media only screen and (max-width:560px) {
+    .BoxItem {
+        width: 220px;
+    }
+
+    .BoxItem img {
+        height: 220px;
+    }
+}
+
+@media only screen and (max-width:500px) {
+    .BoxItem {
+        width: 100%;
+    }
+
+    .BoxItem img {
+        height: 300px;
+    }
+}

@@ -1,0 +1,46 @@
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 0px 10px 0px;
+    gap: 100px;
+}
+
+.buttons button {
+    padding: 5px 10px;
+    border: none;
+    background-color: rgba(255, 0, 0, 0.856);
+    color: white;
+    font-size: 17px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.buttons svg {
+    width: 30px;
+}
+
+.buttons button:hover {
+    background-color: rgba(255, 0, 0, 0.663);
+}
+
+.buttons button:active {
+    transform: scale(1.02);
+}
+
+@media only screen and (max-width:500px) {
+    .buttons {
+        gap: 50px;
+    }
+}
+
+@media only screen and (max-width:400px) {
+    .buttons {
+        gap: 20px;
+    }
+}
