@@ -12,7 +12,7 @@ const Calender = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        async function newsData() {
+        async function getHolidays() {
             try {
                 let response = fetch(`https://calendarific.com/api/v2/holidays?&api_key=5jroa4u9A2uPplePhFhNxmvhFBXg4p5o&country=in&year=${year}`)
                 let res = await response;
@@ -24,7 +24,7 @@ const Calender = () => {
             }
         }
 
-        newsData();
+        getHolidays();
     }, [year]);
 
     const handleSearchChange = (e) => {

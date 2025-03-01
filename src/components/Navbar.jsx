@@ -55,6 +55,7 @@ const Navbar = (props) => {
                         <li className={styles.myapigenerator}>PulseAPI</li>
                         <li className={styles.displayNone}><Link to="/">Home</Link></li>
                         <li className={styles.displayNone}><Link to="/calender">Calender</Link></li>
+                        <li className={styles.displayNone}><Link to="/images">Images</Link></li>
                         <li className={styles.displayNone}><Link to="/movies">Movies</Link></li>
                         <li className={styles.displayNone}><Link to="/songs">Songs</Link></li>
                     </ul>
@@ -80,6 +81,7 @@ const Navbar = (props) => {
             <div className={styles.sideNavbar} id='sideNavbar'>
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/calender">Calender</Link></li>
+                <li><Link to="/images">Images</Link></li>
                 <li><Link to="/movies">Movies</Link></li>
                 <li><Link to="/songs">Songs</Link></li>
             </div>
