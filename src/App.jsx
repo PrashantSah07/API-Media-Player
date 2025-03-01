@@ -21,14 +21,6 @@ const App = () => {
         let response = fetch(`https://api.unsplash.com/search/photos?client_id=suXDuzS6gUrw7JeW7kzKHTNA7lJqQqZDmuIbnn6k_Fw&query=${query}&page=${pageCount}&pageSize=${pageSize}`)
         let res = await response;
         let res2 = await res.json();
-        if (!res.ok) {
-          if (res.status === 429) {
-            navigate('/too-many-request');
-            return;
-          } else {
-            throw new Error(`HTTP error! Status: ${res.status}`);
-          }
-        }
         setData(res2.results);
         setTotalResults(res2.total_pages);
       }

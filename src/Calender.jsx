@@ -17,14 +17,6 @@ const Calender = () => {
                 let response = fetch(`https://calendarific.com/api/v2/holidays?&api_key=5jroa4u9A2uPplePhFhNxmvhFBXg4p5o&country=in&year=${year}`)
                 let res = await response;
                 let res2 = await res.json();
-                if (!res.ok) {
-                    if (res.status === 429) {
-                        navigate('/too-many-request');
-                        return;
-                    } else {
-                        throw new Error(`HTTP error! Status: ${res.status}`);
-                    }
-                }
                 setData(res2.response.holidays);
             }
             catch (error) {

@@ -20,14 +20,6 @@ const Movies = () => {
                 let response = await fetch(`https://api.themoviedb.org/3/search/movie?query=${query}&api_key=6b03720f12b1780deb6f627085df7549&page=${pageCount}`)
                 let res = await response;
                 let res2 = await res.json();
-                if (!res.ok) {
-                    if (res.status === 429) {
-                        navigate('/too-many-request');
-                        return;
-                    } else {
-                        throw new Error(`HTTP error! Status: ${res.status}`);
-                    }
-                }
                 setData(res2.results);
                 setTotalResults(res2.total_results);
             }

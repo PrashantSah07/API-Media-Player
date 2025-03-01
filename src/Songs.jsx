@@ -17,13 +17,6 @@ const Songs = () => {
         async function fetchSongs() {
             try {
                 let response = await fetch(`https://saavn.dev/api/search/songs?query=${query}&page=${pageCount}`);
-                if (!response.ok) {
-                    if (response.status === 429) {
-                        navigate('/too-many-request');
-                        return;
-                    }
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
                 let res2 = await response.json();
                 setData(res2.data.results);
                 setTotalResults(res2.data.total);
