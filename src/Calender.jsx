@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
 import Navbar from './components/Navbar'
 import SearchBox from './components/SearchBox'
 import BoxItem from './components/BoxItem'
+import Loading from './components/Loading'
 import './App.css'
 
 const Calender = () => {
 
     const [data, setData] = useState([]);
     const [year, setYear] = useState(2025);
-    const navigate = useNavigate();
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         async function getHolidays() {
+            setLoading(true);
             try {
                 let response = fetch(`https://calendarific.com/api/v2/holidays?&api_key=5jroa4u9A2uPplePhFhNxmvhFBXg4p5o&country=in&year=${year}`)
                 let res = await response;
@@ -21,6 +22,9 @@ const Calender = () => {
             }
             catch (error) {
                 console.log(error);
+            }
+            finally {
+                setLoading(false);
             }
         }
 
@@ -41,6 +45,7 @@ const Calender = () => {
                     placeholder='Search Holidays By Year'
                     onChange={handleSearchChange}
                 />
+                {loading && <Loading />}
                 <div className="news-card">
                     {data.map((responses, index) => (
                         <BoxItem

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
 import Navbar from './components/Navbar'
 import SearchBox from './components/SearchBox'
 import BoxItem from './components/BoxItem'
 import NextPreviousButtonPage from './components/NextPreviousButtonPage'
+import Loading from './components/Loading'
 import './App.css'
 
 const Images = () => {
@@ -13,10 +13,11 @@ const Images = () => {
     const [pageCount, setPageCount] = useState(1);
     const [totalResults, setTotalResults] = useState(0);
     const [pageSize, setPageSize] = useState(20);
-    const navigate = useNavigate();
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         async function getImages() {
+            setLoading(true);
             try {
                 let response = fetch(`https://api.unsplash.com/search/photos?client_id=suXDuzS6gUrw7JeW7kzKHTNA7lJqQqZDmuIbnn6k_Fw&query=${query}&page=${pageCount}&pageSize=${pageSize}`)
                 let res = await response;
@@ -26,6 +27,9 @@ const Images = () => {
             }
             catch (error) {
                 console.log(error);
+            }
+            finally {
+                setLoading(false);
             }
         }
 
@@ -56,6 +60,7 @@ const Images = () => {
                     placeholder='Search Images'
                     onChange={handleSearchChange}
                 />
+                {loading && <Loading />}
                 <NextPreviousButtonPage previousPage={previousPage} nextPage={nextPage} />
                 <div className="news-card">
                     {data.map((images, index) => (

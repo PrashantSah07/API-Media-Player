@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
 import Navbar from './components/Navbar'
 import SearchBox from './components/SearchBox'
 import BoxItem from './components/BoxItem'
 import NextPreviousButtonPage from './components/NextPreviousButtonPage'
+import Loading from './components/Loading'
 import './App.css'
 
 const Movies = () => {
@@ -12,10 +12,11 @@ const Movies = () => {
     const [query, setQuery] = useState('spider man');
     const [pageCount, setPageCount] = useState(1);
     const [totalResults, setTotalResults] = useState(0);
-    const navigate = useNavigate();
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         async function movieData() {
+            setLoading(true);
             try {
                 let response = await fetch(`https://api.themoviedb.org/3/search/movie?query=${query}&api_key=6b03720f12b1780deb6f627085df7549&page=${pageCount}`)
                 let res = await response;
@@ -25,6 +26,9 @@ const Movies = () => {
             }
             catch (error) {
                 console.log(error);
+            }
+            finally {
+                setLoading(false);
             }
         }
 
@@ -55,6 +59,7 @@ const Movies = () => {
                     placeholder='Search Movies'
                     onChange={handleSearchChange}
                 />
+                {loading && <Loading />}
                 <NextPreviousButtonPage previousPage={previousPage} nextPage={nextPage} />
                 <div className="news-card">
                     {data.map((movies, index) => (

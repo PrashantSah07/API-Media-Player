@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import SearchBox from './components/SearchBox';
 import BoxItem from './components/BoxItem';
 import NextPreviousButtonPage from './components/NextPreviousButtonPage';
+import Loading from './components/Loading'
 import './App.css';
 
 const Songs = () => {
@@ -11,10 +11,11 @@ const Songs = () => {
     const [query, setQuery] = useState('Pehle Bhi Mai');
     const [pageCount, setPageCount] = useState(1);
     const [totalResults, setTotalResults] = useState(0);
-    const navigate = useNavigate();
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         async function fetchSongs() {
+            setLoading(true);
             try {
                 let response = await fetch(`https://saavn.dev/api/search/songs?query=${query}&page=${pageCount}`);
                 let res2 = await response.json();
@@ -22,6 +23,9 @@ const Songs = () => {
                 setTotalResults(res2.data.total);
             } catch (error) {
                 console.error("Error fetching songs:", error);
+            }
+            finally {
+                setLoading(false);
             }
         }
 
@@ -48,6 +52,7 @@ const Songs = () => {
                 placeholder="Search Songs"
                 onChange={handleSearchChange}
             />
+            {loading && <Loading />}
             <NextPreviousButtonPage previousPage={previousPage} nextPage={nextPage} />
             <div className="news-card">
                 {data.map((song, index) => (
