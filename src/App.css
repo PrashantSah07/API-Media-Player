@@ -13,23 +13,36 @@
     padding: 0 20px;
 }
 
-.about p {
-    padding: 20px 50px;
-    font-size: 18px;
-}
-
-.tooManyRequest-Container {
+.errorPage {
     display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin: 50px auto;
-    text-align: center;
-    padding: 0 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    color: white;
 }
 
-@media only screen and (max-width:1000px) {
-    .about p {
-        padding: 15px 20px;
-        font-size: 18px;
+.errorPage h1 {
+    font-size: 24px;
+}
+
+.errorPage p {
+    padding: 16px 20px;
+    border: 0px solid rgba(255, 255, 255, 0.352);
+    border-left-width: 1px;
+    font-size: 15px;
+}
+
+@media only screen and (max-width:330px) {
+    .errorPage {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .errorPage p {
+        border: none;
+        text-align: center;
     }
 }

@@ -7,6 +7,7 @@ import Calender from './Calender.jsx';
 import Images from './Images.jsx'
 import Movies from './Movies.jsx';
 import Songs from './Songs.jsx'
+import Error from './Error.jsx'
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
@@ -16,6 +17,7 @@ createRoot(document.getElementById('root')).render(
       <Route path="/images" element={<Images />} />
       <Route path="/movies" element={<Movies />} />
       <Route path="/songs" element={<Songs />} />
+      <Route path="*" element={<Error />} /> 
     </Routes>
   </BrowserRouter>,
 )
