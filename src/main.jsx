@@ -1,6 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './globle.css';
 import App from './App.jsx';
 import Calender from './Calender.jsx';
@@ -11,7 +11,7 @@ import Error from './Error.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <HashRouter>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/calender" element={<Calender />} />
@@ -20,6 +20,6 @@ createRoot(document.getElementById('root')).render(
         <Route path="/songs" element={<Songs />} />
         <Route path="*" element={<Error />} />
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   </StrictMode>
 );
